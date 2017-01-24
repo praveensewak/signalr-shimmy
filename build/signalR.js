@@ -1271,8 +1271,13 @@ var jQueryShim = require('./jQueryShim');
         getUrl: function getUrl(connection, transport, reconnecting, poll, ajaxPost) {
             /// <summary>Gets the url for making a GET based connect request</summary>
             var baseUrl = transport === "webSockets" ? "" : connection.baseUrl,
-                url = baseUrl + connection.url,
+                url = baseUrl + connection.appRelativeUrl,
                 qs = "transport=" + transport;
+
+            // take my url, if not the same!
+            if (url != connection.url) {
+                url = connection.url;
+            }
 
             if (!ajaxPost && connection.groupsToken) {
                 qs += "&groupsToken=" + window.encodeURIComponent(connection.groupsToken);
