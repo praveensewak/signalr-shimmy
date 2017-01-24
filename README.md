@@ -1,6 +1,8 @@
 # signalr-shimmy
 ## JavaScript SignalR Client with jQuery shimmied
 
+*Credit where credit is due*: love Pawel's work, heavily borrowed from his `signalr-no-jquery' (infact an exact fork). I just needed a faster turnaround to the issues
+
 jQuery shim borrowed from [react-native-signalR](https://github.com/olofd/react-native-signalr)
 
 This version of signalR client doesn't add jQuery to `window` object but imports jQueryShim locally to signalR and exports `hubConnection`.
@@ -17,7 +19,7 @@ npm i --save-dev signalr-shimmy
 #### ES6 Loader
 
 ```
-import { hubConnection } from 'signalr-no-jquery'
+import { hubConnection } from 'signalr-shimmy'
 ```
 
 #### HTML
