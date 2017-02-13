@@ -89,7 +89,7 @@ var ajax = function ajax(options) {
 };
 
 function isObject(o) {
-  return null != o && (typeof o === 'undefined' ? 'undefined' : _typeof(o)) === 'object' && Object.prototype.toString.call(o) === '[object Object]';
+  return null != o && (typeof o === 'undefined' ? 'undefined' : typeof(o)) === 'object' && Object.prototype.toString.call(o) === '[object Object]';
 }
 
 var param = function param(data) {
