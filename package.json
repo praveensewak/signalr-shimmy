@@ -1,6 +1,6 @@
 {
   "name": "signalr-shimmy",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JavaScript SignalR client with jQuery shimmied",
   "keywords": [
     "signalr"
