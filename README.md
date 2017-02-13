@@ -27,7 +27,8 @@ import { hubConnection } from 'signalr-shimmy'
 Use just like regular signalR but without $ namespace
 
 ```
-const connection = hubConnection('http://[address]:[port]', options)
+let connection = hubConnection('http://[address]:[port]', options)
+connection.qs = { 'access_token': 'SECRET_TOKEN' };
 const hubProxy = connection.createHubProxy('hubNameString')
 
 // set up event listeners i.e. for incoming "message" event
