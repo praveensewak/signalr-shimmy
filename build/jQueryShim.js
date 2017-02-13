@@ -88,6 +88,31 @@ var ajax = function ajax(options) {
     };
 };
 
+function isObject(o) {
+  return null != o && (typeof o === 'undefined' ? 'undefined' : typeof(o)) === 'object' && Object.prototype.toString.call(o) === '[object Object]';
+}
+
+var param = function param(data) {
+  if (!isObject(data)) {
+    return data == null ? "" : data.toString();
+  }
+
+  var buffer = [];
+
+  for (var name in data) {
+    if (!data.hasOwnProperty(name)) {
+      continue;
+    }
+
+    var value = data[name];
+
+    buffer.push(encodeURIComponent(name) + "=" + encodeURIComponent(value == null ? "" : value));
+  }
+
+  var source = buffer.join("&").replace(/%20/g, "+");
+  return source;
+};
+
 module.exports = jQueryDeferred.extend(jqueryFunction, jQueryDeferred, {
     defaultAjaxHeaders: null,
     ajax: ajax,
@@ -103,6 +128,7 @@ module.exports = jQueryDeferred.extend(jqueryFunction, jQueryDeferred, {
     makeArray: function makeArray(arr) {
         return [].slice.call(arr, 0);
     },
+    param: param,
     support: {
         cors: function () {
             var xhrObj = xhr();
