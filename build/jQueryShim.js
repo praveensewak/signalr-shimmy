@@ -1,5 +1,7 @@
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var jQueryDeferred = require('jquery-deferred');
 
 var jqueryFunction = function jqueryFunction(subject) {
@@ -89,28 +91,28 @@ var ajax = function ajax(options) {
 };
 
 function isObject(o) {
-  return null != o && (typeof o === 'undefined' ? 'undefined' : typeof(o)) === 'object' && Object.prototype.toString.call(o) === '[object Object]';
+    return null != o && (typeof o === 'undefined' ? 'undefined' : _typeof(o)) === 'object' && Object.prototype.toString.call(o) === '[object Object]';
 }
 
 var param = function param(data) {
-  if (!isObject(data)) {
-    return data == null ? "" : data.toString();
-  }
-
-  var buffer = [];
-
-  for (var name in data) {
-    if (!data.hasOwnProperty(name)) {
-      continue;
+    if (!isObject(data)) {
+        return data == null ? "" : data.toString();
     }
 
-    var value = data[name];
+    var buffer = [];
 
-    buffer.push(encodeURIComponent(name) + "=" + encodeURIComponent(value == null ? "" : value));
-  }
+    for (var name in data) {
+        if (!data.hasOwnProperty(name)) {
+            continue;
+        }
 
-  var source = buffer.join("&").replace(/%20/g, "+");
-  return source;
+        var value = data[name];
+
+        buffer.push(encodeURIComponent(name) + "=" + encodeURIComponent(value == null ? "" : value));
+    }
+
+    var source = buffer.join("&").replace(/%20/g, "+");
+    return source;
 };
 
 module.exports = jQueryDeferred.extend(jqueryFunction, jQueryDeferred, {
