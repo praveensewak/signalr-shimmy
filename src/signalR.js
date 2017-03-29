@@ -1739,7 +1739,7 @@ const jQueryShim = require('./jQueryShim');
                     url = connection.wsProtocol + connection.host;
                 }
 
-                url += transportLogic.getUrl(connection, this.name, reconnecting);
+                url = transportLogic.getUrl(connection, this.name, reconnecting);
 
                 connection.log("Connecting to websocket endpoint '" + url + "'.");
                 connection.socket = new window.WebSocket(url);

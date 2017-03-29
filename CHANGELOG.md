@@ -1,3 +1,7 @@
+### 0.1.7
+
+- Fixed transport logic url for socket/non
+
 ### 0.1.6
 
 - Correct bad concatenation of websocket url
